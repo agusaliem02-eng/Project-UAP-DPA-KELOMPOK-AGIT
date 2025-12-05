@@ -14,6 +14,13 @@ data_freelancer=[]
 def hitung_gaji(jumlah,tarif):
     return jumlah * tarif
 
+def cari_index_dari_nama(nama_dicari):
+    nama_dicari = input('Nama yang ingin dicari    : ')
+    for i, d in enumerate(data_freelancer):
+        if d['nama') == nama_dicari:
+            return i
+    return -1
+    
 def input_data():
     nama = input('Nama Freelancer    : ')
     divisi = input('Divisi Freelancer    : ')
@@ -81,4 +88,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
