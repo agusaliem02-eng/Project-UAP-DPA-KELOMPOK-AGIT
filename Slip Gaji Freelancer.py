@@ -61,21 +61,15 @@ def main():
         print("SISTEM GAJI FREELANCE")
         garis()
         print("1. Tambah data pekerjaan")
-        print("2. Edit data (berdasarkan nama)")
-        print("3. Hapus data (berdasarkan nama)")
-        print("4. Cetak slip gaji freelancer (berdasarkan nama)")
+        print("2. Cetak slip gaji freelancer")
         print("0. Keluar")
         garis()
 
-        pilihan = input("Pilih menu (0-4): ")
+        pilihan = input("Pilih menu (0-2): ")
 
         if pilihan == "1":
             input_data()
         elif pilihan == "2":
-            edit_data()
-        elif pilihan == "3":
-            hapus_data()
-        elif pilihan == "4":
             tampilkan_slip()
         elif pilihan == "0":
             garis()
@@ -87,3 +81,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
