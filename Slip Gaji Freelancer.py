@@ -67,6 +67,25 @@ def tampilkan_slip():
     garis()
     print('Terima kasih atas kerja sama Anda.')
     garis()
+
+def hapus_data():
+    if not data_freelancer:
+        print('Data masih kosong, Harap masukan data terlebih dahulu!')
+        return
+    
+    nama_dicari = input('Masukan nama yang akan dicari    :')
+    index = cari_index_dari_nama(nama_dicari)
+    if index == -1:
+        print('Nama tidak ditemukan, harap cek ulang!')
+        return
+    
+    confirm = input('Apakah anda yakin inngin menghapus data ini (y/n)  : ').lower()
+    if confirm == 'y':
+        del data_freelancer[index]
+        print('Data berhasil dihapus')
+    else:
+        print('Data batal dihapus')
+
     
 def main():
     while True:
@@ -94,3 +113,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
