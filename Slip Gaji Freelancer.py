@@ -15,9 +15,9 @@ def hitung_gaji(jumlah,tarif):
     return jumlah * tarif
 
 def cari_index_dari_nama(nama_dicari):
-    nama_dicari = input('Nama yang ingin dicari    : ')
+    nama_dicari = nama_dicari.lower()
     for i, d in enumerate(data_freelancer):
-        if d['nama') == nama_dicari:
+        if d['nama'] == nama_dicari:
             return i
     return -1
     
@@ -35,11 +35,11 @@ def input_data():
     total = hitung_gaji(jumlah,tarif)
 
     data_freelancer.append({
-        "nama": nama,
-        "pekerjaan": divisi,
-        "jumlah": jumlah,
-        "tarif": tarif,
-        "total": total
+        'nama': nama,
+        'divisi': divisi,
+        'jumlah': jumlah,
+        'tarif': tarif,
+        'total': total
     })
 
     print('Data berhasil diinput dan tersimpan')
@@ -49,44 +49,48 @@ def tampilkan_slip():
         print('Data masih kosong, Harap masukan data terlebih dahulu!')
         return
 
-    d = data_freelancer[0]
+    nama_dicari = input('Masukan nama yang akan dicari    :')
+    index = cari_index_dari_nama(nama_dicari)
+    if index == -1:
+        print('Nama tidak ditemukan, harap cek ulang!')
+        return
+        
+    d = data_freelancer[index]
     garis()
-    print("SLIP GAJI FREELANCER")
+    print('SLIP GAJI FREELANCER')
     garis()
-    print(f"Nama        : {d['nama']}")
-    print(f"Pekerjaan   : {d['pekerjaan']}")
-    print(f"Jumlah kerja: {d['jumlah']}")
-    print(f"Tarif/unit  : Rp {d['tarif']:,}")
-    print(f"Total Gaji  : Rp {d['total']:,}")
+    print(f'Nama        : {d['nama']}')
+    print(f'Divisi   : {d['divisi']}')
+    print(f'Jumlah kerja: {d['jumlah']}')
+    print(f'Tarif/unit  : Rp {d['tarif']:,}')
+    print(f'Total Gaji  : Rp {d['total']:,}')
     garis()
-    print("Terima kasih atas kerja sama Anda.")
+    print('Terima kasih atas kerja sama Anda.')
     garis()
     
 def main():
     while True:
         garis()
-        print("SISTEM GAJI FREELANCE")
+        print('SISTEM GAJI FREELANCE')
         garis()
-        print("1. Tambah data pekerjaan")
-        print("2. Cetak slip gaji freelancer")
-        print("0. Keluar")
+        print('1. Tambah data pekerjaan')
+        print('2. Cetak slip gaji freelancer')
+        print('0. Keluar')
         garis()
 
-        pilihan = input("Pilih menu (0-2): ")
+        pilihan = input('Pilih menu (0-2): ')
 
-        if pilihan == "1":
+        if pilihan == '1':
             input_data()
-        elif pilihan == "2":
+        elif pilihan == '2':
             tampilkan_slip()
-        elif pilihan == "0":
+        elif pilihan == '0':
             garis()
-            print("Terima kasih, program selesai.")
+            print('Terima kasih, program selesai.')
             garis()
             break
         else:
-            print("Pilihan tidak valid.")
+            print('Pilihan tidak valid.')
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
-
-
