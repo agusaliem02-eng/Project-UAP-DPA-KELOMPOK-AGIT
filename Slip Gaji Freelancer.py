@@ -94,15 +94,18 @@ def main():
         garis()
         print('1. Tambah data pekerjaan')
         print('2. Cetak slip gaji freelancer')
+        print('3. Hapus data sesuai nama')
         print('0. Keluar')
         garis()
 
-        pilihan = input('Pilih menu (0-2): ')
+        pilihan = input('Pilih menu (0-3): ')
 
         if pilihan == '1':
             input_data()
         elif pilihan == '2':
             tampilkan_slip()
+        elif pilihan =='3':
+            hapus_data()
         elif pilihan == '0':
             garis()
             print('Terima kasih, program selesai.')
@@ -113,4 +116,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
