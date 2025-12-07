@@ -69,7 +69,60 @@ def tampilkan_slip():
             f"Rp {d['total']:<15,}"
         )
         print("\n")
-        
+
+def edit_data():
+    if not data_freelancer:
+        print('Data masih kosong, Harap masukan data terlebih dahulu!')
+        return
+    
+    nama_dicari = input("Masukkan nama yang ingin diedit: ").lower()
+    index = cari_index_dari_nama(nama_dicari)
+
+    if index == -1:
+        print("Nama tidak ditemukan, cek ulang!")
+        return
+
+    d = data_freelancer[index]
+
+    print("\nData ditemukan. Isi baru (kosongkan jika tidak ingin mengubah):")
+    print(f"Nama lama      : {d['nama']}")
+    print(f"Divisi lama    : {d['divisi']}")
+    print(f"Jumlah lama    : {d['jumlah']}")
+    print(f"Tarif lama     : {d['tarif']}")
+
+    # Input baru dengan opsi skip
+    nama_baru = input("Nama baru     : ").strip()
+    if nama_baru:
+        d['nama'] = nama_baru.lower()
+
+    divisi_baru = input("Divisi baru   : ").strip()
+    if divisi_baru:
+        d['divisi'] = divisi_baru
+
+    jumlah_baru = input("Jumlah baru   : ").strip()
+    if jumlah_baru:
+        try:
+            d['jumlah'] = int(jumlah_baru)
+        except ValueError:
+            print("Jumlah harus angka! Data tidak berubah.")
+            return
+
+    tarif_baru = input("Tarif baru    : ").strip()
+    if tarif_baru:
+        try:
+            d['tarif'] = float(tarif_baru)
+        except ValueError:
+            print("Tarif harus angka! Data tidak berubah.")
+            return
+
+    # Hitung ulang total
+    d['total'] = hitung_gaji(d['jumlah'], d['tarif'])
+
+    print("\nData berhasil diperbarui.")
+    print("\n")
+    tampilkan_slip()
+    print("\n")
+
 def cetak_slip():
     if not data_freelancer:
         print('Data masih kosong, Harap masukan data terlebih dahulu!')
@@ -123,11 +176,12 @@ def main():
         print('1. Tambah data pekerjaan')
         print("2. Tampilkan data freelancer")
         print('3. Cetak slip gaji freelancer')
-        print('4. Hapus data sesuai nama')
+        print("4. Edit data sesuai nama")
+        print('5. Hapus data sesuai nama')
         print('0. Keluar')
         garis()
 
-        pilihan = input('Pilih menu (0-4): ')
+        pilihan = input('Pilih menu (0-5): ')
 
         if pilihan == '1':
             input_data()
@@ -135,7 +189,9 @@ def main():
             edit_slip()
         elif pilihan == "3":
             tampilkan_slip()
-        elif pilihan =='4':
+        elif pilihan == "4":
+            edit_data()
+        elif pilihan =='5':
             hapus_data()
         elif pilihan == '0':
             garis()
@@ -149,6 +205,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
