@@ -151,7 +151,7 @@ def cetak_slip():
     print("\n")
 
 def hapus_data():
-    tampilkan_data()
+    tampilkan_slip()
     if not data_freelancer:
         print('Data masih kosong, Harap masukan data terlebih dahulu!')
         return
@@ -211,6 +211,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
