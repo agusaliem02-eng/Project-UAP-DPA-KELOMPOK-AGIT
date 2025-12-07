@@ -192,9 +192,9 @@ def main():
         if pilihan == '1':
             input_data()
         elif pilihan == '2':
-            edit_slip()
-        elif pilihan == "3":
             tampilkan_slip()
+        elif pilihan == "3":
+            edit_data()
         elif pilihan == "4":
             edit_data()
         elif pilihan =='5':
@@ -211,6 +211,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
