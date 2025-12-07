@@ -71,6 +71,7 @@ def tampilkan_slip():
         print("\n")
 
 def edit_data():
+    tampilkan_slip()
     if not data_freelancer:
         print('Data masih kosong, Harap masukan data terlebih dahulu!')
         return
@@ -124,6 +125,7 @@ def edit_data():
     print("\n")
 
 def cetak_slip():
+    tampilkan_slip()
     if not data_freelancer:
         print('Data masih kosong, Harap masukan data terlebih dahulu!')
         return
@@ -146,8 +148,10 @@ def cetak_slip():
     garis()
     print('Terima kasih atas kerja sama Anda.')
     garis()
+    print("\n")
 
 def hapus_data():
+    tampilkan_data()
     if not data_freelancer:
         print('Data masih kosong, Harap masukan data terlebih dahulu!')
         return
@@ -158,13 +162,15 @@ def hapus_data():
         print('Nama tidak ditemukan, harap cek ulang!')
         return
     
-    confirm = input('Apakah anda yakin inngin menghapus data ini (y/n)  : ').lower()
+    confirm = input('Apakah anda yakin ingin menghapus data ini (y/n)  : ').lower()
     if confirm == 'y':
         del data_freelancer[index]
         print('Data berhasil dihapus')
         print("\n")
     else:
         print('Data batal dihapus')
+        print("\n")
+        return main()
         print("\n")
 
     
@@ -205,6 +211,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
