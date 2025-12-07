@@ -43,8 +43,34 @@ def input_data():
     })
 
     print('Data berhasil diinput dan tersimpan')
-
+    print("\n")
+    
 def tampilkan_slip():
+    if not data_freelancer:
+        print("Belum ada data!")
+        return
+
+    garis()
+    print("DAFTAR DATA FREELANCER (TABEL)")
+    garis()
+
+    # Header tabel
+    print(f"{'No':<4} {'Nama':<15} {'Divisi':<15} {'Jumlah':<8} {'Tarif':<20} {'Total':<15}")
+    print("-" * 75)
+
+    # Isi tabel
+    for i, d in enumerate(data_freelancer, start=1):
+        print(
+            f"{i:<4}"
+            f"{d['nama']:<15}"
+            f"{d['divisi']:<15}"
+            f"{d['jumlah']:<8}"
+            f"Rp {d['tarif']:<20,}"
+            f"Rp {d['total']:<15,}"
+        )
+        print("\n")
+        
+def cetak_slip():
     if not data_freelancer:
         print('Data masih kosong, Harap masukan data terlebih dahulu!')
         return
@@ -60,7 +86,7 @@ def tampilkan_slip():
     print('SLIP GAJI FREELANCER')
     garis()
     print(f'Nama        : {d['nama']}')
-    print(f'Divisi   : {d['divisi']}')
+    print(f'Divisi      : {d['divisi']}')
     print(f'Jumlah kerja: {d['jumlah']}')
     print(f'Tarif/unit  : Rp {d['tarif']:,}')
     print(f'Total Gaji  : Rp {d['total']:,}')
@@ -83,8 +109,10 @@ def hapus_data():
     if confirm == 'y':
         del data_freelancer[index]
         print('Data berhasil dihapus')
+        print("\n")
     else:
         print('Data batal dihapus')
+        print("\n")
 
     
 def main():
@@ -93,29 +121,35 @@ def main():
         print('SISTEM GAJI FREELANCE')
         garis()
         print('1. Tambah data pekerjaan')
-        print('2. Cetak slip gaji freelancer')
-        print('3. Hapus data sesuai nama')
+        print("2. Tampilkan data freelancer")
+        print('3. Cetak slip gaji freelancer')
+        print('4. Hapus data sesuai nama')
         print('0. Keluar')
         garis()
 
-        pilihan = input('Pilih menu (0-3): ')
+        pilihan = input('Pilih menu (0-4): ')
 
         if pilihan == '1':
             input_data()
         elif pilihan == '2':
+            edit_slip()
+        elif pilihan == "3":
             tampilkan_slip()
-        elif pilihan =='3':
+        elif pilihan =='4':
             hapus_data()
         elif pilihan == '0':
             garis()
             print('Terima kasih, program selesai.')
             garis()
+            print("\n")
             break
         else:
             print('Pilihan tidak valid.')
+            print("\n")
 
 if __name__ == '__main__':
     main()
+
 
 
 
