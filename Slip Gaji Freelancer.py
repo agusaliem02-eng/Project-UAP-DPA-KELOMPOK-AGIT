@@ -182,7 +182,7 @@ def main():
         print('1. Tambah data pekerjaan')
         print('2. Tampilkan data freelancer')
         print('3. Edit data sesuai nama')
-        print('4. Cetak slip gaji freelancerEdit data sesuai nama')
+        print('4. Cetak slip gaji freelancer')
         print('5. Hapus data sesuai nama')
         print('0. Keluar')
         garis()
@@ -211,6 +211,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
