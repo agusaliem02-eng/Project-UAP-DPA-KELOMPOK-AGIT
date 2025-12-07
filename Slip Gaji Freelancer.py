@@ -30,7 +30,7 @@ def input_data():
         tarif = float(input('Harga /pcs (Rp.)    : '))
     except ValueError:
         print('Input harus berupa angka!')
-        return
+        return input_data()
 
     total = hitung_gaji(jumlah,tarif)
 
@@ -116,5 +116,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
