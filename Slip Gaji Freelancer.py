@@ -22,12 +22,12 @@ def cari_index_dari_nama(nama_dicari):
     return -1
     
 def input_data():
-    nama = input('Nama Freelancer    : ')
-    divisi = input('Divisi Freelancer    : ')
+    nama = input('Nama Freelancer     : ')
+    divisi = input('Divisi Freelancer : ')
 
     try:
         jumlah = int(input('Jumlah yang diselesaikan    : '))
-        tarif = float(input('Harga /pcs (Rp.)    : '))
+        tarif = float(input('Harga/pcs (Rp.)           : '))
     except ValueError:
         print('Input harus berupa angka!')
         return input_data()
@@ -149,6 +149,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
