@@ -1,7 +1,7 @@
 # Project-UAP-DPA-KELOMPOK-AGIT
 
 
-1. Data utama program
+# 1. Data utama program
 
 data_freelancer = []
 
@@ -20,10 +20,7 @@ Setiap elemen di dalamnya adalah dictionary dengan isi:
 
 Jadi data_freelancer itu semacam database kecil di memori.
 
-
----
-
-2. Fungsi bantu
+# 2. Fungsi bantu
 
 garis()
 
@@ -33,10 +30,6 @@ def garis():
 Buat tampilan lebih rapi.
 
 Tinggal dipanggil kalau mau kasih garis pemisah di menu / slip.
-
-
-
----
 
 hitung_gaji(jumlah, tarif)
 
@@ -50,11 +43,6 @@ Dipakai di:
 input_data() saat pertama kali simpan data
 
 edit_data() saat data pekerjaan diubah
-
-
-
-
----
 
 cari_index_dari_nama(nama_dicari)
 
@@ -76,22 +64,9 @@ d = dictionary data freelancer.
 
 Kalau ketemu nama yang cocok → kembalikan index-nya.
 
-Kalau tidak ketemu → kembalikan -1 sebagai kode “tidak ditemukan”.
+Kalau tidak ketemu → kembalikan -1 sebagai kode “tidak ditemukan”
 
-
-> Catatan kecil: kamu sudah lower() di nama_dicari, tapi di input_data() nama disimpan apa adanya ('nama': nama). Biar aman biasanya:
-
-saat simpan: nama.lower()
-
-saat bandingkan juga pakai .lower()
-
-
-
-
-
----
-
-3. Input data baru: input_data()
+# 3. Input data baru: input_data()
 
 def input_data():
     nama = input('Nama Freelancer     : ')
@@ -142,11 +117,7 @@ Data freelancer ditambahkan ke list data_freelancer.
 
 total sudah dihitung dari fungsi hitung_gaji.
 
-
-
----
-
-4. Tampilkan semua data: tampilkan_slip()
+# 4. Tampilkan semua data: tampilkan_slip()
 
 def tampilkan_slip():
     if not data_freelancer:
@@ -187,11 +158,7 @@ start=1 → nomor mulai dari 1.
 
 Angka tarif dan total diformat dengan koma ribuan (pakai :,), misal 1,000,000.
 
-
-
----
-
-5. Edit data: edit_data()
+# 5. Edit data: edit_data()
 
 1. Pertama, selalu tampilkan dulu semua data:
 
@@ -248,12 +215,7 @@ d['total'] = hitung_gaji(d['jumlah'], d['tarif'])
 
 8. Lalu tampilkan data terbaru dengan tampilkan_slip().
 
-
-
-
----
-
-6. Cetak slip 1 orang: cetak_slip()
+# 6. Cetak slip 1 orang: cetak_slip()
 
 1. Tampilkan dulu semua data:
 
@@ -287,18 +249,7 @@ garis()
 print('Terima kasih atas kerja sama Anda.')
 garis()
 
-
-
-> Di koding yang kamu kirim, bagian f'Nama        : {d['nama']}' bakal error karena kutipnya tabrakan. Harusnya pakai kutip luar "..." atau escape, misal:
-
-print(f"Nama        : {d['nama']}")
-
-
-
-
----
-
-7. Hapus data: hapus_data()
+# 7. Hapus data: hapus_data()
 
 1. Tampilkan data dulu.
 
@@ -326,15 +277,7 @@ else:
 
 del data_freelancer[index] → benar-benar menghapus elemen pada posisi itu.
 
-
-> Catatan: return main() di else sebenarnya tidak perlu, karena kamu sudah punya while True di main(). Cukup return saja.
-
-
-
-
----
-
-8. Fungsi utama: main()
+# 8. Fungsi utama: main()
 
 def main():
     while True:
@@ -385,11 +328,7 @@ main()
 
 Artinya, begitu file ini dijalankan, langsung masuk ke menu utama.
 
-
-
----
-
-Ringkasan singkat
+# Ringkasan singkat
 
 Program ini adalah aplikasi menu berbasis teks untuk:
 
