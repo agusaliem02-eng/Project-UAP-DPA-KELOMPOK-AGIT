@@ -209,5 +209,4 @@ def main():
             print('Pilihan tidak valid.')
             print("\n")
 
-if __name__ == '__main__':
-    main()
+main()
