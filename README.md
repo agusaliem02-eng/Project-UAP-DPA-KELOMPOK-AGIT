@@ -9,13 +9,13 @@ Ini adalah list kosong yang akan menampung semua data freelancer.
 
 Setiap elemen di dalamnya adalah dictionary dengan isi:
 
-{
-    'nama': ...,
-    'divisi': ...,
-    'jumlah': ...,
-    'tarif': ...,
-    'total': ...
-}
+    {
+        'nama': ...,
+        'divisi': ...,
+        'jumlah': ...,
+        'tarif': ...,
+        'total': ...
+    }
 
 
 Jadi data_freelancer itu semacam database kecil di memori.
@@ -24,8 +24,8 @@ Jadi data_freelancer itu semacam database kecil di memori.
 
 garis()
 
-def garis():
-    print('=' * 45)
+    def garis():
+        print('=' * 45)
 
 Buat tampilan lebih rapi.
 
@@ -33,8 +33,8 @@ Tinggal dipanggil kalau mau kasih garis pemisah di menu / slip.
 
 hitung_gaji(jumlah, tarif)
 
-def hitung_gaji(jumlah,tarif):
-    return jumlah * tarif
+    def hitung_gaji(jumlah,tarif):
+        return jumlah * tarif
 
 Fungsi ini cuma menghitung gaji total = jumlah kerja × tarif per unit.
 
@@ -46,12 +46,12 @@ edit_data() saat data pekerjaan diubah
 
 cari_index_dari_nama(nama_dicari)
 
-def cari_index_dari_nama(nama_dicari):
-    nama_dicari = nama_dicari.lower()
-    for i, d in enumerate(data_freelancer):
-        if d['nama'] == nama_dicari:
-            return i
-    return -1
+    def cari_index_dari_nama(nama_dicari):
+        nama_dicari = nama_dicari.lower()
+        for i, d in enumerate(data_freelancer):
+            if d['nama'] == nama_dicari:
+                return i
+        return -1
 
 Tujuannya: mencari posisi (index) freelancer di data_freelancer berdasarkan nama.
 
@@ -68,9 +68,9 @@ Kalau tidak ketemu → kembalikan -1 sebagai kode “tidak ditemukan”
 
 # 3. Input data baru: input_data()
 
-def input_data():
-    nama = input('Nama Freelancer     : ')
-    divisi = input('Divisi Freelancer : ')
+    def input_data():
+        nama = input('Nama Freelancer     : ')
+        divisi = input('Divisi Freelancer : ')
 
 User memasukkan:
 
@@ -82,12 +82,12 @@ divisi freelancer
 
 Lalu input angka:
 
-try:
-        jumlah = int(input('Jumlah yang diselesaikan    : '))
-        tarif = float(input('Harga/pcs (Rp.)           : '))
-    except ValueError:
-        print('Input harus berupa angka!')
-        return input_data()
+    try:
+            jumlah = int(input('Jumlah yang diselesaikan    : '))
+            tarif = float(input('Harga/pcs (Rp.)           : '))
+        except ValueError:
+            print('Input harus berupa angka!')
+            return input_data()
 
 jumlah = berapa banyak pekerjaan yang diselesaikan.
 
@@ -119,10 +119,10 @@ total sudah dihitung dari fungsi hitung_gaji.
 
 # 4. Tampilkan semua data: tampilkan_slip()
 
-def tampilkan_slip():
-    if not data_freelancer:
-        print("Belum ada data!")
-        return
+    def tampilkan_slip():
+        if not data_freelancer:
+            print("Belum ada data!")
+            return
 
 Kalau list kosong → langsung info “Belum ada data!”.
 
@@ -141,16 +141,16 @@ Pakai format string dengan lebar kolom (:<15 dll) biar tabel rapi.
 
 Isi tabel:
 
-for i, d in enumerate(data_freelancer, start=1):
-        print(
-            f"{i:<4}"
-            f"{d['nama']:<15}"
-            f"{d['divisi']:<15}"
-            f"{d['jumlah']:<8}"
-            f"Rp {d['tarif']:<20,}"
-            f"Rp {d['total']:<15,}"
-        )
-        print("\n")
+    for i, d in enumerate(data_freelancer, start=1):
+            print(
+                f"{i:<4}"
+                f"{d['nama']:<15}"
+                f"{d['divisi']:<15}"
+                f"{d['jumlah']:<8}"
+                f"Rp {d['tarif']:<20,}"
+                f"Rp {d['total']:<15,}"
+    )
+            print("\n")
 
 Loop semua data.
 
@@ -162,55 +162,55 @@ Angka tarif dan total diformat dengan koma ribuan (pakai :,), misal 1,000,000.
 
 1. Pertama, selalu tampilkan dulu semua data:
 
-tampilkan_slip()
-if not data_freelancer:
-    print('Data masih kosong...')
-    return
+    tampilkan_slip()
+        if not data_freelancer:
+            print('Data masih kosong...')
+            return
 
 
 2. Minta nama yang mau diedit:
 
-nama_dicari = input("Masukkan nama yang ingin diedit: ").lower()
-index = cari_index_dari_nama(nama_dicari)
+    nama_dicari = input("Masukkan nama yang ingin diedit: ").lower()
+    index = cari_index_dari_nama(nama_dicari)
 
 
 3. Kalau tidak ketemu:
 
-if index == -1:
-    print("Nama tidak ditemukan, cek ulang!")
-    return
+    if index == -1:
+        print("Nama tidak ditemukan, cek ulang!")
+        return
 
 
 4. Kalau ketemu, ambil datanya:
 
-d = data_freelancer[index]
+    d = data_freelancer[index]
 
 
 5. Tampilkan data lama + minta data baru (boleh kosong = tidak diubah):
 
-nama_baru = input("Nama baru     : ").strip()
-if nama_baru:
-    d['nama'] = nama_baru.lower()
+    nama_baru = input("Nama baru     : ").strip()
+    if nama_baru:
+        d['nama'] = nama_baru.lower()
 
-divisi_baru = input("Divisi baru   : ").strip()
-if divisi_baru:
-    d['divisi'] = divisi_baru
+    divisi_baru = input("Divisi baru   : ").strip()
+    if divisi_baru:
+        d['divisi'] = divisi_baru
 
 
 6. Untuk jumlah dan tarif, dicek lagi apakah angka:
-
-jumlah_baru = input("Jumlah baru   : ").strip()
-if jumlah_baru:
-    try:
-        d['jumlah'] = int(jumlah_baru)
-    except ValueError:
-        print("Jumlah harus angka! Data tidak berubah.")
-        return
+   
+    jumlah_baru = input("Jumlah baru   : ").strip()
+    if jumlah_baru:
+        try:
+            d['jumlah'] = int(jumlah_baru)
+        except ValueError:
+            print("Jumlah harus angka! Data tidak berubah.")
+            return
 
 
 7. Setelah mungkin ada perubahan → hitung ulang total:
 
-d['total'] = hitung_gaji(d['jumlah'], d['tarif'])
+    d['total'] = hitung_gaji(d['jumlah'], d['tarif'])
 
 
 8. Lalu tampilkan data terbaru dengan tampilkan_slip().
@@ -219,16 +219,16 @@ d['total'] = hitung_gaji(d['jumlah'], d['tarif'])
 
 1. Tampilkan dulu semua data:
 
-tampilkan_slip()
-if not data_freelancer:
-    print('Data masih kosong...')
-    return
+    tampilkan_slip()
+    if not data_freelancer:
+        print('Data masih kosong...')
+        return
 
 
 2. Minta nama yang akan dicetak slipnya:
 
-nama_dicari = input('Masukan nama yang akan dicari    :')
-index = cari_index_dari_nama(nama_dicari)
+    nama_dicari = input('Masukan nama yang akan dicari    :')
+    index = cari_index_dari_nama(nama_dicari)
 
 
 3. Kalau tidak ada, kasih info.
@@ -252,26 +252,18 @@ garis()
 # 7. Hapus data: hapus_data()
 
 1. Tampilkan data dulu.
-
-
 2. Cek kalau list kosong → keluar fungsi.
-
-
 3. Minta nama yang mau dihapus.
-
-
 4. Cari index pakai cari_index_dari_nama.
-
-
 5. Kalau ketemu, konfirmasi:
 
-confirm = input('Apakah anda yakin ingin menghapus data ini (y/n)  : ').lower()
-if confirm == 'y':
-    del data_freelancer[index]
-    print('Data berhasil dihapus')
-else:
-    print('Data batal dihapus')
-    return main()
+    confirm = input('Apakah anda yakin ingin menghapus data ini (y/n)  : ').lower()
+    if confirm == 'y':
+        del data_freelancer[index]
+        print('Data berhasil dihapus')
+    else:
+        print('Data batal dihapus')
+        return main()
 
 
 
@@ -279,48 +271,47 @@ del data_freelancer[index] → benar-benar menghapus elemen pada posisi itu.
 
 # 8. Fungsi utama: main()
 
-def main():
-    while True:
-        garis()
-        print('SISTEM GAJI FREELANCE')
-        garis()
-        print('1. Tambah data pekerjaan')
-        print('2. Tampilkan data freelancer')
-        print('3. Edit data sesuai nama')
-        print('4. Cetak slip gaji freelancer')
-        print('5. Hapus data sesuai nama')
-        print('0. Keluar')
-        garis()
-
-        pilihan = input('Pilih menu (0-5): ')
+    def main():
+        while True:
+            garis()
+            print('SISTEM GAJI FREELANCE')
+            garis()
+            print('1. Tambah data pekerjaan')
+            print('2. Tampilkan data freelancer')
+            print('3. Edit data sesuai nama')
+            print('4. Cetak slip gaji freelancer')
+            print('5. Hapus data sesuai nama')
+            print('0. Keluar')
+            garis()
+  
+            pilihan = input('Pilih menu (0-5): ')
 
 while True: → program jalan terus sampai user pilih "0. Keluar".
 
 Baca pilihan user, lalu:
 
 
-if pilihan == '1':
-            input_data()
-        elif pilihan == '2':
-            tampilkan_slip()
-        elif pilihan == "3":
-            edit_data()
-        elif pilihan == "4":
-            cetak_slip()
-        elif pilihan =='5':
-            hapus_data()
-        elif pilihan == '0':
-            garis()
-            print('Terima kasih, program selesai.')
-            garis()
-            break
-        else:
-            print('Pilihan tidak valid.')
+    if pilihan == '1':
+                input_data()
+            elif pilihan == '2':
+                tampilkan_slip()
+            elif pilihan == "3":
+                edit_data()
+            elif pilihan == "4":
+                cetak_slip()
+            elif pilihan =='5':
+                hapus_data()
+            elif pilihan == '0':
+                garis()
+                print('Terima kasih, program selesai.')
+                garis()
+                break
+            else:
+                print('Pilihan tidak valid.')
 
 Setiap menu mengarah ke fungsi yang sesuai.
 
 Kalau pilih 0 → cetak pesan terima kasih, lalu break dari loop → program selesai.
-
 
 Di bawah, kamu panggil:
 
